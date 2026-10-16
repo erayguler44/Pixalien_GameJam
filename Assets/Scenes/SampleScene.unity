@@ -383,7 +383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69268ef72da5b5f428c3c189b43bbfec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RainManager
-  prepTime: 20
+  prepTime: 2
   isRaining: 0
   waterCube: {fileID: 747753813}
   minWaterY: -0.5
