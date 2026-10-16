@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (!GameMenu.IsPlaying) return;
         if (Mouse.current != null && Mouse.current.rightButton.wasPressedThisFrame)
         {
             // 1. Confirms the new Input System is detecting your right-click
