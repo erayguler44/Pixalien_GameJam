@@ -119,11 +119,29 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &106031858 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8732811460859032716, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
+  m_PrefabInstance: {fileID: 4992268718790002490}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &106031862 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6049592282245532019, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
   m_PrefabInstance: {fileID: 4992268718790002490}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &106031863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106031858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e0a2c3d22d1ed43b66acee05fdf694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GlowOnHover
+  glowColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,7 +279,7 @@ GameObject:
   m_Component:
   - component: {fileID: 635381524}
   m_Layer: 0
-  m_Name: Draineges
+  m_Name: Drainages
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -343,6 +361,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 635381524}
     m_Modifications:
+    - target: {fileID: 1039761450991190568, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ac03305055eb34d408e599cd108536a1, type: 2}
     - target: {fileID: 6049592282245532019, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.5
@@ -390,13 +412,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8732811460859032716, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1627673977}
   m_SourcePrefab: {fileID: 100100000, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
 --- !u!4 &1627673975 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6049592282245532019, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
   m_PrefabInstance: {fileID: 1627673974}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1627673976 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8732811460859032716, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
+  m_PrefabInstance: {fileID: 1627673974}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1627673977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1627673976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e0a2c3d22d1ed43b66acee05fdf694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GlowOnHover
+  glowColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1001 &1759229905
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -405,6 +448,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 635381524}
     m_Modifications:
+    - target: {fileID: 1039761450991190568, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ac03305055eb34d408e599cd108536a1, type: 2}
     - target: {fileID: 6049592282245532019, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.5
@@ -452,13 +499,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8732811460859032716, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1759229908}
   m_SourcePrefab: {fileID: 100100000, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
 --- !u!4 &1759229906 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6049592282245532019, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
   m_PrefabInstance: {fileID: 1759229905}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1759229907 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8732811460859032716, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
+  m_PrefabInstance: {fileID: 1759229905}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1759229908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759229907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e0a2c3d22d1ed43b66acee05fdf694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GlowOnHover
+  glowColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1001 &1938964034
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -467,6 +535,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 635381524}
     m_Modifications:
+    - target: {fileID: 1039761450991190568, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ac03305055eb34d408e599cd108536a1, type: 2}
     - target: {fileID: 6049592282245532019, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.5
@@ -514,13 +586,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8732811460859032716, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1938964037}
   m_SourcePrefab: {fileID: 100100000, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
 --- !u!4 &1938964035 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6049592282245532019, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
   m_PrefabInstance: {fileID: 1938964034}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1938964036 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8732811460859032716, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
+  m_PrefabInstance: {fileID: 1938964034}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1938964037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938964036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e0a2c3d22d1ed43b66acee05fdf694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GlowOnHover
+  glowColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1001 &4992268718790002490
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -529,6 +622,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 635381524}
     m_Modifications:
+    - target: {fileID: 1039761450991190568, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ac03305055eb34d408e599cd108536a1, type: 2}
     - target: {fileID: 6049592282245532019, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.5
@@ -576,7 +673,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8732811460859032716, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 106031863}
   m_SourcePrefab: {fileID: 100100000, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
 --- !u!1001 &8174019677534128931
 PrefabInstance:
