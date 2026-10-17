@@ -152,7 +152,7 @@ Transform:
   m_GameObject: {fileID: 193752590}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -229,15 +229,15 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -7343297136652238346, guid: c10704df3822e0c488b83a41110ea95e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.8888889, y: 1.7777778}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!114 &193752594
@@ -2028,7 +2028,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DrainageNode
   obstacleLevel: 0
   maxLevel: 5
-  fillRate: 3
+  fillRate: 4
   player: {fileID: 3347079893078245416}
   cleaningRadius: 2
   debrisRenderer: {fileID: 1653732096}
@@ -2310,7 +2310,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DrainageNode
   obstacleLevel: 0
   maxLevel: 5
-  fillRate: 3
+  fillRate: 4
   player: {fileID: 3347079893078245416}
   cleaningRadius: 2
   debrisRenderer: {fileID: 300456119}
@@ -2725,7 +2725,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DrainageNode
   obstacleLevel: 0
   maxLevel: 5
-  fillRate: 3
+  fillRate: 4
   player: {fileID: 3347079893078245416}
   cleaningRadius: 2
   debrisRenderer: {fileID: 2132217303}
@@ -2915,7 +2915,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DrainageNode
   obstacleLevel: 0
   maxLevel: 5
-  fillRate: 3
+  fillRate: 4
   player: {fileID: 3347079893078245416}
   cleaningRadius: 2
   debrisRenderer: {fileID: 768654115}

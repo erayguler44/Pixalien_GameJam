@@ -7,17 +7,16 @@ public class PlayerVisuals : MonoBehaviour
     [Header("Components")]
     public Animator anim;
     public SpriteRenderer spriteRenderer;
-    [Tooltip("Drag the parent Player object here")]
     public NavMeshAgent agent;
     public Transform mainCamera;
 
-    private Vector3 lastDirection = Vector3.back; // Defaults to facing forward
     private string currentAnim = "";
     public bool isCleaning = false;
 
     void Start()
     {
         if (mainCamera == null) mainCamera = Camera.main.transform;
+        if (agent != null) agent.updateRotation = false; 
     }
 
     void LateUpdate()
@@ -26,62 +25,66 @@ public class PlayerVisuals : MonoBehaviour
 
         if (isCleaning) return; 
 
-        Vector3 velocity = agent.velocity;
-        float speed = velocity.magnitude;
-
-        // DEBUG: This will print your character's speed to the console when moving
-        if (speed > 0)
-        {
-            Debug.Log("Current Agent Speed: " + speed);
-        }
-
-        if (velocity.x < -0.1f) spriteRenderer.flipX = true;
-        else if (velocity.x > 0.1f) spriteRenderer.flipX = false;
+        Vector3 direction = agent.desiredVelocity;
+        if (direction.magnitude < 0.1f) direction = agent.velocity;
+        
+        float speed = agent.velocity.magnitude;
 
         if (speed > 0.1f)
         {
-            lastDirection = velocity.normalized;
-            ChangeAnimation("WalkSide"); 
-        }
-        else
-        {
-            if (Mathf.Abs(lastDirection.z) > Mathf.Abs(lastDirection.x))
+            // Flatten the camera's vectors so we ignore the 30-degree downward tilt
+            Vector3 camForward = mainCamera.forward;
+            camForward.y = 0;
+            camForward.Normalize();
+
+            Vector3 camRight = mainCamera.right;
+            camRight.y = 0;
+            camRight.Normalize();
+
+            // Translate the world direction into Screen Left/Right and Screen Up/Down
+            float screenX = Vector3.Dot(direction, camRight);
+            float screenY = Vector3.Dot(direction, camForward);
+
+            // Flip instantly based on screen Left/Right
+            if (screenX < -0.1f) spriteRenderer.flipX = true;
+            else if (screenX > 0.1f) spriteRenderer.flipX = false;
+
+            // Trigger animations based on the screen's axes
+            if (Mathf.Abs(screenY) > Mathf.Abs(screenX) * 0.5f)
             {
-                if (lastDirection.z > 0) ChangeAnimation("IdleBack");
-                else ChangeAnimation("IdleFront");
+                if (screenY > 0) ChangeAnimation("WalkBack");
+                else ChangeAnimation("WalkFront");
             }
             else
             {
-                ChangeAnimation("IdleSide");
+                ChangeAnimation("WalkSide");
             }
+        }
+        else
+        {
+            ChangeAnimation("IdleFront");
         }
     }
 
     private void ChangeAnimation(string newAnim)
     {
         if (currentAnim == newAnim) return;
-        
-        // DEBUG: This prints the exact name of the animation it is trying to play
-        Debug.Log("Attempting to play animation state: " + newAnim);
-        
         anim.Play(newAnim);
         currentAnim = newAnim;
     }
 
-        // We will call this from your DrainageNode script later
-        public void StartCleaning()
-        {
-            isCleaning = true;
-            ChangeAnimation("Clean");
-            agent.isStopped = true; // Stop moving
-            
-            // Adjust this time to match exactly how long your 28-frame cleaning animation takes
-            Invoke("StopCleaning", 1.5f); 
-        }
-
-        private void StopCleaning()
-        {
-            isCleaning = false;
-            agent.isStopped = false; // Resume moving
-        }
+    public void StartCleaning()
+    {
+        isCleaning = true;
+        ChangeAnimation("Clean");
+        agent.isStopped = true; 
+        
+        Invoke("StopCleaning", 1.5f); 
     }
+
+    private void StopCleaning()
+    {
+        isCleaning = false;
+        agent.isStopped = false; 
+    }
+}
