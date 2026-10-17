@@ -1179,7 +1179,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0, g: 1, b: 1, a: 1}
+      maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -2734,7 +2734,7 @@ ParticleSystem:
     m_Bounce:
       serializedVersion: 3
       minMaxState: 0
-      scalar: 0.1
+      scalar: 0.7
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -2751,7 +2751,7 @@ ParticleSystem:
     m_EnergyLossOnCollision:
       serializedVersion: 3
       minMaxState: 0
-      scalar: 0.5
+      scalar: 0.6
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -3413,6 +3413,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8732811460859032716, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1627673980}
+    - targetCorrespondingSourceObject: {fileID: 8732811460859032716, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1627673984}
   m_SourcePrefab: {fileID: 100100000, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
 --- !u!4 &1627673975 stripped
 Transform:
@@ -3451,12 +3454,28 @@ MonoBehaviour:
   cleaningRadius: 1
   debrisRenderer: {fileID: 1653732096}
   debrisSprites:
-  - {fileID: -855298285791758126, guid: 2a9f336f746607540a5f838a84d269fb, type: 3}
-  - {fileID: 6937817954938267909, guid: 4848aef6533e56a4e86e63376d33ea51, type: 3}
-  - {fileID: -6470460504253458178, guid: 4a7c6289d003c31418fec9a2f356b66d, type: 3}
-  - {fileID: -4178046375966092550, guid: 9991fa678188cb44eb911fe723c3d0a0, type: 3}
-  - {fileID: 4130640169021434097, guid: 9c4881b000c2e824289e4f24c6743588, type: 3}
+  - {fileID: 21300000, guid: 4d3a1fefaa660c4419c2cba71b2f015f, type: 3}
+  - {fileID: 21300000, guid: 2320e7f9681eecd45917b62126b236d6, type: 3}
+  - {fileID: 21300000, guid: ac108c2bc1b3b1e4a9fbeaf6f31cc2ff, type: 3}
+  - {fileID: 21300000, guid: ac72c4e979e3aac46ab831cc6bda878e, type: 3}
+  - {fileID: 21300000, guid: 99da54d4559990043956a274b2999984, type: 3}
   playerInRangeColor: {r: 0, g: 1, b: 0, a: 1}
+--- !u!114 &1627673984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1163401096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f72ebba0dc38baa4a8fc6afc759d5551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpritePulse
+  spriteRenderer: {fileID: 1653732096}
+  pulseSpeed: 3
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  glowColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &1653732094
 GameObject:
   m_ObjectHideFlags: 0
@@ -3586,12 +3605,28 @@ MonoBehaviour:
   cleaningRadius: 1
   debrisRenderer: {fileID: 300456119}
   debrisSprites:
-  - {fileID: -855298285791758126, guid: 2a9f336f746607540a5f838a84d269fb, type: 3}
-  - {fileID: 6937817954938267909, guid: 4848aef6533e56a4e86e63376d33ea51, type: 3}
-  - {fileID: -6470460504253458178, guid: 4a7c6289d003c31418fec9a2f356b66d, type: 3}
-  - {fileID: -4178046375966092550, guid: 9991fa678188cb44eb911fe723c3d0a0, type: 3}
-  - {fileID: 4130640169021434097, guid: 9c4881b000c2e824289e4f24c6743588, type: 3}
+  - {fileID: 21300000, guid: 4d3a1fefaa660c4419c2cba71b2f015f, type: 3}
+  - {fileID: 21300000, guid: 2320e7f9681eecd45917b62126b236d6, type: 3}
+  - {fileID: 21300000, guid: ac108c2bc1b3b1e4a9fbeaf6f31cc2ff, type: 3}
+  - {fileID: 21300000, guid: ac72c4e979e3aac46ab831cc6bda878e, type: 3}
+  - {fileID: 21300000, guid: 99da54d4559990043956a274b2999984, type: 3}
   playerInRangeColor: {r: 0, g: 1, b: 0, a: 1}
+--- !u!114 &1735421041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735421032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f72ebba0dc38baa4a8fc6afc759d5551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpritePulse
+  spriteRenderer: {fileID: 300456119}
+  pulseSpeed: 3
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  glowColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &1738877690
 GameObject:
   m_ObjectHideFlags: 0
@@ -3771,6 +3806,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8732811460859032716, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2012342533}
+    - targetCorrespondingSourceObject: {fileID: 8732811460859032716, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2012342537}
   m_SourcePrefab: {fileID: 100100000, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
 --- !u!4 &1759229906 stripped
 Transform:
@@ -3963,6 +4001,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8732811460859032716, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1938964040}
+    - targetCorrespondingSourceObject: {fileID: 8732811460859032716, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1938964044}
   m_SourcePrefab: {fileID: 100100000, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
 --- !u!4 &1938964035 stripped
 Transform:
@@ -4001,12 +4042,28 @@ MonoBehaviour:
   cleaningRadius: 1
   debrisRenderer: {fileID: 2132217303}
   debrisSprites:
-  - {fileID: -855298285791758126, guid: 2a9f336f746607540a5f838a84d269fb, type: 3}
-  - {fileID: 6937817954938267909, guid: 4848aef6533e56a4e86e63376d33ea51, type: 3}
-  - {fileID: -6470460504253458178, guid: 4a7c6289d003c31418fec9a2f356b66d, type: 3}
-  - {fileID: -4178046375966092550, guid: 9991fa678188cb44eb911fe723c3d0a0, type: 3}
-  - {fileID: 4130640169021434097, guid: 9c4881b000c2e824289e4f24c6743588, type: 3}
+  - {fileID: 21300000, guid: 4d3a1fefaa660c4419c2cba71b2f015f, type: 3}
+  - {fileID: 21300000, guid: 2320e7f9681eecd45917b62126b236d6, type: 3}
+  - {fileID: 21300000, guid: ac108c2bc1b3b1e4a9fbeaf6f31cc2ff, type: 3}
+  - {fileID: 21300000, guid: ac72c4e979e3aac46ab831cc6bda878e, type: 3}
+  - {fileID: 21300000, guid: 99da54d4559990043956a274b2999984, type: 3}
   playerInRangeColor: {r: 0, g: 1, b: 0, a: 1}
+--- !u!114 &1938964044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079220458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f72ebba0dc38baa4a8fc6afc759d5551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpritePulse
+  spriteRenderer: {fileID: 2132217303}
+  pulseSpeed: 3
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  glowColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &2012342528 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8732811460859032716, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
@@ -4044,12 +4101,28 @@ MonoBehaviour:
   cleaningRadius: 1
   debrisRenderer: {fileID: 768654115}
   debrisSprites:
-  - {fileID: -855298285791758126, guid: 2a9f336f746607540a5f838a84d269fb, type: 3}
-  - {fileID: 6937817954938267909, guid: 4848aef6533e56a4e86e63376d33ea51, type: 3}
-  - {fileID: -6470460504253458178, guid: 4a7c6289d003c31418fec9a2f356b66d, type: 3}
-  - {fileID: -4178046375966092550, guid: 9991fa678188cb44eb911fe723c3d0a0, type: 3}
-  - {fileID: 4130640169021434097, guid: 9c4881b000c2e824289e4f24c6743588, type: 3}
+  - {fileID: 21300000, guid: 4d3a1fefaa660c4419c2cba71b2f015f, type: 3}
+  - {fileID: 21300000, guid: 2320e7f9681eecd45917b62126b236d6, type: 3}
+  - {fileID: 21300000, guid: ac108c2bc1b3b1e4a9fbeaf6f31cc2ff, type: 3}
+  - {fileID: 21300000, guid: ac72c4e979e3aac46ab831cc6bda878e, type: 3}
+  - {fileID: 21300000, guid: 99da54d4559990043956a274b2999984, type: 3}
   playerInRangeColor: {r: 0, g: 1, b: 0, a: 1}
+--- !u!114 &2012342537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012342528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f72ebba0dc38baa4a8fc6afc759d5551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpritePulse
+  spriteRenderer: {fileID: 768654115}
+  pulseSpeed: 3
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  glowColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1001 &2015424493
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4579,6 +4652,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8732811460859032716, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1735421037}
+    - targetCorrespondingSourceObject: {fileID: 8732811460859032716, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1735421041}
   m_SourcePrefab: {fileID: 100100000, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
 --- !u!81 &5731587906557887178
 AudioListener:
