@@ -4,19 +4,39 @@ using UnityEngine.SceneManagement;
 
 public class GameMenu : MonoBehaviour
 {
+    // Diğer scriptler buradan erişir: GameMenu.Instance.GameOver();
+    public static GameMenu Instance { get; private set; }
+
     // Diğer scriptler oyunun akıp akmadığını buradan kontrol eder
     public static bool IsPlaying { get; private set; }
 
+    // Play Again'e basılınca sahne yeniden yüklenir; bu bayrak ana menüyü atlatır
+    static bool skipMainMenu = false;
+
     [SerializeField] GameObject mainMenuPanel;  // Play / Quit
     [SerializeField] GameObject pauseMenuPanel; // Resume / Main Menu
-    [SerializeField] GameObject pauseBlur;      // Durunca açılan bulanıklık Volume'ü (opsiyonel)
+    [SerializeField] GameObject gameOverPanel;  // Play Again / Main Menu
+    [SerializeField] GameObject pauseBlur;      // Bulanıklık Volume'ü (opsiyonel)
 
-    enum State { MainMenu, Playing, Paused }
+    enum State { MainMenu, Playing, Paused, GameOver }
     State state;
+
+    void Awake()
+    {
+        Instance = this;
+    }
 
     void Start()
     {
-        SetState(State.MainMenu);
+        if (skipMainMenu)
+        {
+            skipMainMenu = false;
+            SetState(State.Playing);
+        }
+        else
+        {
+            SetState(State.MainMenu);
+        }
     }
 
     void Update()
@@ -26,7 +46,15 @@ public class GameMenu : MonoBehaviour
 
         if (state == State.Playing) SetState(State.Paused);
         else if (state == State.Paused) SetState(State.Playing);
-        // Ana menüdeyken ESC hiçbir şey yapmaz
+        // Ana menüde ve oyun bitti ekranında ESC hiçbir şey yapmaz
+    }
+
+    // ----- Oyuncu kaybedince başka scriptten çağrılır -----
+
+    public void GameOver()
+    {
+        if (state == State.Playing)
+            SetState(State.GameOver);
     }
 
     // ----- Butonlar -----
@@ -34,11 +62,16 @@ public class GameMenu : MonoBehaviour
     public void Play()   => SetState(State.Playing);
     public void Resume() => SetState(State.Playing);
 
+    public void PlayAgain()
+    {
+        skipMainMenu = true;   // Yeniden yüklenince doğrudan oyun başlasın
+        ReloadScene();
+    }
+
     public void MainMenu()
     {
-        // Sahneyi baştan yükle: her şey sıfırlanır, Start() ana menüyü açar
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        skipMainMenu = false;  // Yeniden yüklenince ana menü açılsın
+        ReloadScene();
     }
 
     public void Quit()
@@ -50,7 +83,13 @@ public class GameMenu : MonoBehaviour
 #endif
     }
 
-    // ----- Durum yönetimi -----
+    // ----- Yardımcılar -----
+
+    void ReloadScene()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 
     void SetState(State newState)
     {
@@ -59,7 +98,10 @@ public class GameMenu : MonoBehaviour
 
         mainMenuPanel.SetActive(state == State.MainMenu);
         pauseMenuPanel.SetActive(state == State.Paused);
-        if (pauseBlur != null) pauseBlur.SetActive(state == State.Paused);
+        gameOverPanel.SetActive(state == State.GameOver);
+
+        if (pauseBlur != null)
+            pauseBlur.SetActive(state == State.Paused || state == State.GameOver);
 
         // Oyun sadece Playing durumunda akar
         Time.timeScale = IsPlaying ? 1f : 0f;
