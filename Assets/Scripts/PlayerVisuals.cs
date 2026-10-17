@@ -10,6 +10,12 @@ public class PlayerVisuals : MonoBehaviour
     public NavMeshAgent agent;
     public Transform mainCamera;
 
+    [Header("Audio")]
+    [Tooltip("Drag the AudioSource containing the walk sound here")]
+    public AudioSource walkAudioSource;
+    [Tooltip("Drag the AudioSource containing the cleaning sound here")]
+    public AudioSource cleanAudioSource;
+
     private string currentAnim = "";
     public bool isCleaning = false;
 
@@ -23,7 +29,14 @@ public class PlayerVisuals : MonoBehaviour
     {
         transform.rotation = mainCamera.rotation;
 
-        if (isCleaning) return; 
+        if (isCleaning) 
+        {
+            if (walkAudioSource != null && walkAudioSource.isPlaying)
+            {
+                walkAudioSource.Stop();
+            }
+            return; 
+        }
 
         Vector3 direction = agent.desiredVelocity;
         if (direction.magnitude < 0.1f) direction = agent.velocity;
@@ -32,7 +45,11 @@ public class PlayerVisuals : MonoBehaviour
 
         if (speed > 0.1f)
         {
-            // Flatten the camera's vectors so we ignore the 30-degree downward tilt
+            if (walkAudioSource != null && !walkAudioSource.isPlaying)
+            {
+                walkAudioSource.Play();
+            }
+
             Vector3 camForward = mainCamera.forward;
             camForward.y = 0;
             camForward.Normalize();
@@ -41,15 +58,12 @@ public class PlayerVisuals : MonoBehaviour
             camRight.y = 0;
             camRight.Normalize();
 
-            // Translate the world direction into Screen Left/Right and Screen Up/Down
             float screenX = Vector3.Dot(direction, camRight);
             float screenY = Vector3.Dot(direction, camForward);
 
-            // Flip instantly based on screen Left/Right
             if (screenX < -0.1f) spriteRenderer.flipX = true;
             else if (screenX > 0.1f) spriteRenderer.flipX = false;
 
-            // Trigger animations based on the screen's axes
             if (Mathf.Abs(screenY) > Mathf.Abs(screenX) * 0.5f)
             {
                 if (screenY > 0) ChangeAnimation("WalkBack");
@@ -62,6 +76,10 @@ public class PlayerVisuals : MonoBehaviour
         }
         else
         {
+            if (walkAudioSource != null && walkAudioSource.isPlaying)
+            {
+                walkAudioSource.Stop();
+            }
             ChangeAnimation("IdleFront");
         }
     }
@@ -78,6 +96,12 @@ public class PlayerVisuals : MonoBehaviour
         isCleaning = true;
         ChangeAnimation("Clean");
         agent.isStopped = true; 
+        
+        // Play the cleaning sound exactly once when the animation starts
+        if (cleanAudioSource != null)
+        {
+            cleanAudioSource.Play();
+        }
         
         Invoke("StopCleaning", 1.5f); 
     }
