@@ -1811,6 +1811,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6228185508632921463, guid: 83d5643d6a6d69d47be39c9c86c60b0d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c5960f930cbe56948b0c4af43e2e5a63, type: 2}
+    - target: {fileID: 7802946104103516944, guid: 83d5643d6a6d69d47be39c9c86c60b0d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d8cad1f58c2bb145b1843086073f983, type: 2}
     - target: {fileID: 8423219991100355688, guid: 83d5643d6a6d69d47be39c9c86c60b0d, type: 3}
       propertyPath: m_Name
       value: TheScenceElements
