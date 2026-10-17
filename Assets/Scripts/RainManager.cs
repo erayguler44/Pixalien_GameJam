@@ -78,7 +78,6 @@ public class RainManager : MonoBehaviour
     void GameOver()
     {
         Debug.Log("Game Over! Restarting Scene...");
-        // Loads the currently active scene again to instantly restart
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        GameMenu.Instance.GameOver();   // Oyun bitti ekranını aç
     }
 }
