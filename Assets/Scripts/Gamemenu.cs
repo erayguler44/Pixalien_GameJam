@@ -51,10 +51,15 @@ public class GameMenu : MonoBehaviour
 
     // ----- Oyuncu kaybedince başka scriptten çağrılır -----
 
+    // Oyun bittiği an haber almak isteyen scriptler buna abone olur (örn. ScoreManager)
+    public static event System.Action OnGameOver;
+
     public void GameOver()
     {
-        if (state == State.Playing)
-            SetState(State.GameOver);
+        if (state != State.Playing) return;
+
+        OnGameOver?.Invoke();   // Önce skorlar hesaplansın
+        SetState(State.GameOver);
     }
 
     // ----- Butonlar -----

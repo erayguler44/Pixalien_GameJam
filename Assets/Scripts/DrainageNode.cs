@@ -95,6 +95,7 @@ public class DrainageNode : MonoBehaviour
 
     private void CleanDrainage()
     {
+        ScoreManager.Instance.AddLeaves(obstacleLevel);
         obstacleLevel = 0;
         timer = 0f;
         UpdateVisuals();

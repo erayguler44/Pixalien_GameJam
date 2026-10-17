@@ -79,6 +79,6 @@ public class RainManager : MonoBehaviour
     void GameOver()
     {
         Debug.Log("Game Over! Restarting Scene...");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        GameMenu.Instance.GameOver();
     }
 }
