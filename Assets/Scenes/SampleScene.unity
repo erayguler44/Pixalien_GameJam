@@ -31749,6 +31749,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7039573568192700884, guid: 28d6e610a6b72ab4393ebdbbc8d14853, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7039573568192700884, guid: 28d6e610a6b72ab4393ebdbbc8d14853, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7039573568192700884, guid: 28d6e610a6b72ab4393ebdbbc8d14853, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 2560
+      objectReference: {fileID: 0}
+    - target: {fileID: 7039573568192700884, guid: 28d6e610a6b72ab4393ebdbbc8d14853, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1440
+      objectReference: {fileID: 0}
     - target: {fileID: 7046650866517196561, guid: 28d6e610a6b72ab4393ebdbbc8d14853, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 288
