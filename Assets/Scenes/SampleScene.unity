@@ -7301,6 +7301,12 @@ MonoBehaviour:
   gameOverPanel: {fileID: 2015424494}
   tutorialPanel: {fileID: 2098198817}
   pauseBlur: {fileID: 2015424495}
+  gameOverAudio: {fileID: 284818937}
+  uiClickAudio: {fileID: 1999832603}
+  uiHoverAudio: {fileID: 610005948}
+  menuMusic: {fileID: 52803510}
+  gameMusic: {fileID: 686456909}
+  gameOverMusic: {fileID: 284818937}
 --- !u!114 &574844692
 MonoBehaviour:
   m_ObjectHideFlags: 0
