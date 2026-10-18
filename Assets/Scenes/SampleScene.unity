@@ -796,6 +796,7 @@ GameObject:
   - component: {fileID: 103459858}
   - component: {fileID: 103459860}
   - component: {fileID: 103459859}
+  - component: {fileID: 103459861}
   m_Layer: 0
   m_Name: Particle System (2)
   m_TagString: Untagged
@@ -1044,7 +1045,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 3
       minMaxState: 0
-      scalar: 0.2
+      scalar: 0.4
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -3101,6 +3102,20 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &103459861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103459857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ef03f53278f692468dd581fba2848be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PixelParticles
+  includeChildren: 1
+  opacity: 0.6
 --- !u!4 &106031862 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6049592282245532019, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
@@ -8199,6 +8214,7 @@ GameObject:
   - component: {fileID: 865129947}
   - component: {fileID: 865129949}
   - component: {fileID: 865129948}
+  - component: {fileID: 865129950}
   m_Layer: 0
   m_Name: Particle System (1)
   m_TagString: Untagged
@@ -8447,7 +8463,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 3
       minMaxState: 0
-      scalar: 0.2
+      scalar: 0.4
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -10504,6 +10520,20 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &865129950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865129946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ef03f53278f692468dd581fba2848be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PixelParticles
+  includeChildren: 1
+  opacity: 0.6
 --- !u!224 &891311907 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2187976137552762657, guid: 28d6e610a6b72ab4393ebdbbc8d14853, type: 3}
@@ -13475,6 +13505,7 @@ GameObject:
   - component: {fileID: 1204024767}
   - component: {fileID: 1204024769}
   - component: {fileID: 1204024768}
+  - component: {fileID: 1204024770}
   m_Layer: 0
   m_Name: Particle System
   m_TagString: Untagged
@@ -13723,7 +13754,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 3
       minMaxState: 0
-      scalar: 0.2
+      scalar: 0.4
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -15780,6 +15811,20 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &1204024770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204024766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ef03f53278f692468dd581fba2848be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PixelParticles
+  includeChildren: 1
+  opacity: 0.6
 --- !u!1 &1233967598
 GameObject:
   m_ObjectHideFlags: 0
@@ -18152,6 +18197,7 @@ GameObject:
   - component: {fileID: 1766287409}
   - component: {fileID: 1766287411}
   - component: {fileID: 1766287410}
+  - component: {fileID: 1766287412}
   m_Layer: 0
   m_Name: Particle System (3)
   m_TagString: Untagged
@@ -18400,7 +18446,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 3
       minMaxState: 0
-      scalar: 0.2
+      scalar: 0.4
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -20457,6 +20503,20 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &1766287412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766287408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ef03f53278f692468dd581fba2848be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PixelParticles
+  includeChildren: 1
+  opacity: 0.6
 --- !u!114 &1771167619
 MonoBehaviour:
   m_ObjectHideFlags: 0
