@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Water
+  m_Shader: {fileID: 4800000, guid: e101a000a7a40324995a1e23945d5f69, type: 3}
+  m_Parent: {fileID: 2100000, guid: 4865244ac25a18149b24d8b749f3bd25, type: 2}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _RECEIVE_SHADOWS_OFF
+  - _SURFACE_TYPE_TRANSPARENT
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap:
+    RenderType: Transparent
+  disabledShaderPasses:
+  - MOTIONVECTORS
+  - DepthOnly
+  - SHADOWCASTER
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BaseMap:
+        m_Texture: {fileID: 2800000, guid: 9c8ec06b815fb3b43afac906ec4c23a0, type: 3}
+        m_Scale: {x: 4, y: 16}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 9c8ec06b815fb3b43afac906ec4c23a0, type: 3}
+        m_Scale: {x: 4, y: 16}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _BobAmount: 0.0145
+    - _BobSpeed: 1.5
+    - _Cutoff: 0.062
+    - _EdgeFade: 0.186
+    - _FoamWaveAmount: 0.045
+    - _FoamWidth: 0.099
+    - _ReceiveShadows: 0
+    m_Colors:
+    - _BaseColor: {r: 0.20594504, g: 0.40667677, b: 0.5597484, a: 0.50980395}
+    - _Color: {r: 0.20594501, g: 0.40667674, b: 0.5597484, a: 0.50980395}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
+--- !u!114 &2518913654968252784
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Editor::UnityEditor.Rendering.Universal.AssetVersion
+  version: 10
