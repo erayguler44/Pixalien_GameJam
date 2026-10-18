@@ -103,9 +103,16 @@ public class RainManager : MonoBehaviour
             // Dynamically slow down the player based on water height
             if (playerAgent != null)
             {
-                // Gets a percentage from 0.0 (empty) to 1.0 (overflowing)
                 float waterPercent = Mathf.InverseLerp(minWaterY, maxWaterY, waterCube.position.y);
-                playerAgent.speed = Mathf.Lerp(maxPlayerSpeed, minPlayerSpeed, waterPercent);
+                float targetSpeed = Mathf.Lerp(maxPlayerSpeed, minPlayerSpeed, waterPercent);
+                
+                // NEW: Apply a severe 75% speed penalty if the trash bag is completely full
+                if (ScoreManager.Instance != null && ScoreManager.Instance.currentBagLoad >= ScoreManager.Instance.maxBagCapacity)
+                {
+                    targetSpeed *= 0.25f; 
+                }
+                
+                playerAgent.speed = targetSpeed;
             }
         }
 

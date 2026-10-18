@@ -106,15 +106,22 @@ public class DrainageNode : MonoBehaviour
 
     private void CleanDrainage()
     {
-        ScoreManager.Instance.AddLeaves(obstacleLevel);
-        obstacleLevel = 0;
-        timer = 0f;
-        currentFillTarget = Random.Range(minFillRate, maxFillRate); // Reset randomness on clean
-        UpdateVisuals();
+        // Ask the ScoreManager to take the trash, and it tells us how much fit in the bag
+        int amountTaken = ScoreManager.Instance.AddLeaves(obstacleLevel);
         
-        if (playerVisuals != null && !playerVisuals.isCleaning)
+        // Only play the cleaning animation if we actually picked up trash
+        if (amountTaken > 0)
         {
-            playerVisuals.StartCleaning();
+            obstacleLevel -= amountTaken;
+            timer = 0f;
+            currentFillTarget = Random.Range(minFillRate, maxFillRate); 
+            UpdateVisuals();
+            
+            if (playerVisuals != null && !playerVisuals.isCleaning)
+            {
+                playerVisuals.StartCleaning();
+            }
+            Debug.Log(gameObject.name + " was cleaned! Leaves taken: " + amountTaken);
         }
     }
 
