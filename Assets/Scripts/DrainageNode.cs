@@ -3,10 +3,14 @@ using UnityEngine;
 
 public class DrainageNode : MonoBehaviour
 {
-    [Header("Obstacle Settings")]
+    [Header("Obstacle Settings (Randomized)")]
     public int obstacleLevel = 0;
     public int maxLevel = 5;
-    public float fillRate = 4f; 
+    [Tooltip("Minimum seconds before a new leaf drops")]
+    public float minFillRate = 2f; 
+    [Tooltip("Maximum seconds before a new leaf drops")]
+    public float maxFillRate = 7f; 
+    private float currentFillTarget;
     private float timer = 0f;
 
     [Header("Cleaning Settings")]
@@ -21,9 +25,7 @@ public class DrainageNode : MonoBehaviour
     [Header("Drain Particle Settings")]
     public ParticleSystem drainParticles;
     public float maxEmissionRate = 50f;
-    [Tooltip("Speed when the drain is perfectly clean")]
     public float maxParticleSpeed = 3f;
-    [Tooltip("Speed when the drain is almost completely clogged")]
     public float minParticleSpeed = 0.5f;
 
     [Header("Debug Visuals")]
@@ -52,7 +54,8 @@ public class DrainageNode : MonoBehaviour
             originalEmission = rend.material.GetColor("_EmissionColor");
         }
 
-        timer = Random.Range(0f, 2f);
+        // Roll the very first random timer
+        currentFillTarget = Random.Range(minFillRate, maxFillRate);
         UpdateVisuals();
     }
 
@@ -61,10 +64,13 @@ public class DrainageNode : MonoBehaviour
         if (obstacleLevel < maxLevel)
         {
             timer += Time.deltaTime;
-            if (timer >= fillRate)
+            if (timer >= currentFillTarget)
             {
                 obstacleLevel++;
                 timer = 0f;
+                
+                // Roll a new random time for the next level so it is entirely unpredictable
+                currentFillTarget = Random.Range(minFillRate, maxFillRate);
                 UpdateVisuals();
             }
         }
@@ -103,29 +109,32 @@ public class DrainageNode : MonoBehaviour
         ScoreManager.Instance.AddLeaves(obstacleLevel);
         obstacleLevel = 0;
         timer = 0f;
+        currentFillTarget = Random.Range(minFillRate, maxFillRate); // Reset randomness on clean
         UpdateVisuals();
         
         if (playerVisuals != null && !playerVisuals.isCleaning)
         {
             playerVisuals.StartCleaning();
         }
-
-        Debug.Log(gameObject.name + " was cleaned!");
     }
 
     private void UpdateVisuals()
     {
         if (debrisRenderer != null)
         {
-            if (obstacleLevel == 0)
-            {
-                debrisRenderer.sprite = null;
-            }
+            if (obstacleLevel == 0) debrisRenderer.sprite = null;
             else if (obstacleLevel > 0 && obstacleLevel <= debrisSprites.Length)
             {
                 debrisRenderer.sprite = debrisSprites[obstacleLevel - 1];
             }
         }
+    }
+
+    // NEW: Exponential efficiency curve (1.0, 0.64, 0.36, 0.16, 0.04, 0.0)
+    public float GetDrainEfficiency()
+    {
+        float normalized = 1f - ((float)obstacleLevel / (float)maxLevel);
+        return normalized * normalized; 
     }
 
     public void UpdateWaterLevel(float currentWaterY)
@@ -142,22 +151,14 @@ public class DrainageNode : MonoBehaviour
             return;
         }
 
-        if (!drainParticles.isPlaying)
-        {
-            drainParticles.Play();
-        }
+        if (!drainParticles.isPlaying) drainParticles.Play();
 
-        // Calculate how clean the drain is (1 = clean, 0 = clogged)
-        float efficiency = 1f - ((float)obstacleLevel / (float)maxLevel);
+        // Hook the particles into the new exponential curve
+        float efficiency = GetDrainEfficiency();
         
-        // 1. Scale emission amount
         emission.rateOverTime = maxEmissionRate * efficiency;
-
-        // 2. Scale particle speed smoothly between your min and max
         float currentSpeed = Mathf.Lerp(minParticleSpeed, maxParticleSpeed, efficiency);
         main.startSpeed = currentSpeed;
-
-        // 3. Recalculate lifetime using the NEW exact speed so they still clip perfectly
         main.startLifetime = distanceToWater / currentSpeed;
     }
 

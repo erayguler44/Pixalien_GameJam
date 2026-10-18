@@ -7160,10 +7160,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RainManager
   prepTime: 2
   isRaining: 0
+  playerAgent: {fileID: 1771167620}
+  maxPlayerSpeed: 3.5
+  minPlayerSpeed: 1
+  rainAddSpeed: 0.35
+  maxDrainPower: 0.15
   waterCube: {fileID: 747753813}
   minWaterY: -0.5
   maxWaterY: 2
-  baseWaterSpeed: 0.1
   drainages:
   - {fileID: 1735421037}
   - {fileID: 1627673980}
@@ -24240,7 +24244,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DrainageNode
   obstacleLevel: 0
   maxLevel: 5
-  fillRate: 4
+  minFillRate: 2
+  maxFillRate: 7
   player: {fileID: 3347079893078245416}
   cleaningRadius: 1
   debrisRenderer: {fileID: 1653732096}
@@ -24811,7 +24816,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DrainageNode
   obstacleLevel: 0
   maxLevel: 5
-  fillRate: 4
+  minFillRate: 2
+  maxFillRate: 7
   player: {fileID: 3347079893078245416}
   cleaningRadius: 1
   debrisRenderer: {fileID: 300456119}
@@ -30405,7 +30411,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DrainageNode
   obstacleLevel: 0
   maxLevel: 5
-  fillRate: 4
+  minFillRate: 2
+  maxFillRate: 7
   player: {fileID: 3347079893078245416}
   cleaningRadius: 1
   debrisRenderer: {fileID: 2132217303}
@@ -30597,7 +30604,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DrainageNode
   obstacleLevel: 0
   maxLevel: 5
-  fillRate: 4
+  minFillRate: 2
+  maxFillRate: 7
   player: {fileID: 3347079893078245416}
   cleaningRadius: 1
   debrisRenderer: {fileID: 768654115}
