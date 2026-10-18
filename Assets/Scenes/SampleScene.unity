@@ -7016,6 +7016,7 @@ GameObject:
   - component: {fileID: 563372987}
   - component: {fileID: 563372990}
   - component: {fileID: 563372989}
+  - component: {fileID: 563372991}
   m_Layer: 0
   m_Name: Cardboard
   m_TagString: Untagged
@@ -7095,6 +7096,28 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 563372986}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &563372991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 563372986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18e70bd9913500c46b703d1a99ce5c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BoxClickHint
+  frames:
+  - {fileID: -7503894029628632692, guid: 9659610a4a4ffdf49a2be81155b37acd, type: 3}
+  - {fileID: 900754932, guid: 9659610a4a4ffdf49a2be81155b37acd, type: 3}
+  - {fileID: -1417879360, guid: 9659610a4a4ffdf49a2be81155b37acd, type: 3}
+  - {fileID: -1127445193, guid: 9659610a4a4ffdf49a2be81155b37acd, type: 3}
+  fps: 10
+  iconSize: 0.6
+  gapAboveBox: 0.15
+  showRadius: 0
+  sortingOrder: 50
 --- !u!1 &566793646
 GameObject:
   m_ObjectHideFlags: 0
@@ -21095,6 +21118,7 @@ GameObject:
   - component: {fileID: 1251538878}
   - component: {fileID: 1251538881}
   - component: {fileID: 1251538880}
+  - component: {fileID: 1251538882}
   m_Layer: 0
   m_Name: Cardboard
   m_TagString: Untagged
@@ -21174,6 +21198,28 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1251538877}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1251538882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251538877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18e70bd9913500c46b703d1a99ce5c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BoxClickHint
+  frames:
+  - {fileID: -7503894029628632692, guid: 9659610a4a4ffdf49a2be81155b37acd, type: 3}
+  - {fileID: 900754932, guid: 9659610a4a4ffdf49a2be81155b37acd, type: 3}
+  - {fileID: -1417879360, guid: 9659610a4a4ffdf49a2be81155b37acd, type: 3}
+  - {fileID: -1127445193, guid: 9659610a4a4ffdf49a2be81155b37acd, type: 3}
+  fps: 10
+  iconSize: 0.6
+  gapAboveBox: 0.15
+  showRadius: 0
+  sortingOrder: 50
 --- !u!1 &1258583499
 GameObject:
   m_ObjectHideFlags: 0
@@ -23901,6 +23947,7 @@ GameObject:
   - component: {fileID: 1413610705}
   - component: {fileID: 1413610708}
   - component: {fileID: 1413610707}
+  - component: {fileID: 1413610709}
   m_Layer: 0
   m_Name: Cardboard
   m_TagString: Untagged
@@ -23980,6 +24027,28 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1413610704}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1413610709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413610704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18e70bd9913500c46b703d1a99ce5c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BoxClickHint
+  frames:
+  - {fileID: -7503894029628632692, guid: 9659610a4a4ffdf49a2be81155b37acd, type: 3}
+  - {fileID: 900754932, guid: 9659610a4a4ffdf49a2be81155b37acd, type: 3}
+  - {fileID: -1417879360, guid: 9659610a4a4ffdf49a2be81155b37acd, type: 3}
+  - {fileID: -1127445193, guid: 9659610a4a4ffdf49a2be81155b37acd, type: 3}
+  fps: 10
+  iconSize: 0.6
+  gapAboveBox: 0.15
+  showRadius: 0
+  sortingOrder: 50
 --- !u!1 &1485414137
 GameObject:
   m_ObjectHideFlags: 0
@@ -31186,6 +31255,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 20808508149774029, guid: 28d6e610a6b72ab4393ebdbbc8d14853, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 581846559628305929, guid: f6064543dac46744599c6ceddc604081, type: 3}
     - target: {fileID: 259179438283860315, guid: 28d6e610a6b72ab4393ebdbbc8d14853, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -33845,6 +33918,7 @@ GameObject:
   - component: {fileID: 2083471753}
   - component: {fileID: 2083471756}
   - component: {fileID: 2083471755}
+  - component: {fileID: 2083471757}
   m_Layer: 0
   m_Name: Cardboard
   m_TagString: Untagged
@@ -33924,6 +33998,28 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2083471752}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2083471757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083471752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18e70bd9913500c46b703d1a99ce5c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BoxClickHint
+  frames:
+  - {fileID: -7503894029628632692, guid: 9659610a4a4ffdf49a2be81155b37acd, type: 3}
+  - {fileID: 900754932, guid: 9659610a4a4ffdf49a2be81155b37acd, type: 3}
+  - {fileID: -1417879360, guid: 9659610a4a4ffdf49a2be81155b37acd, type: 3}
+  - {fileID: -1127445193, guid: 9659610a4a4ffdf49a2be81155b37acd, type: 3}
+  fps: 10
+  iconSize: 0.6
+  gapAboveBox: 0.15
+  showRadius: 0
+  sortingOrder: 50
 --- !u!1 &2098198817
 GameObject:
   m_ObjectHideFlags: 0
@@ -34333,6 +34429,7 @@ GameObject:
   - component: {fileID: 1771167620}
   - component: {fileID: 1771167619}
   - component: {fileID: 3347079893078245417}
+  - component: {fileID: 3347079893078245418}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -34405,6 +34502,31 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3347079893078245418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1785547549312788624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77b71e8d8629b464a84a0b8bd7cda8ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HeadHint
+  frames:
+  - {fileID: -2540506831838803053, guid: 3e1e2451ea9f7de48bf8b990f9c7d206, type: 3}
+  - {fileID: 201874914, guid: 3e1e2451ea9f7de48bf8b990f9c7d206, type: 3}
+  - {fileID: 1673978665, guid: 3e1e2451ea9f7de48bf8b990f9c7d206, type: 3}
+  - {fileID: 1824522031, guid: 3e1e2451ea9f7de48bf8b990f9c7d206, type: 3}
+  fps: 10
+  textSprite: {fileID: -8340035542911888744, guid: dfae2905f06851a429a07578a3c0ee97, type: 3}
+  iconSize: 1
+  spacingPixels: -6
+  gapAboveHead: 0.3
+  showDuration: 5
+  fadeDuration: 0.4
+  sortingOrder: 60
 --- !u!33 &4574341640547308078
 MeshFilter:
   m_ObjectHideFlags: 0
