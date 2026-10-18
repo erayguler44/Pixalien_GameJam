@@ -1044,7 +1044,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 3
       minMaxState: 0
-      scalar: 1
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -1220,7 +1220,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 1
+      value: 0.7
       mode: 0
       spread: 0
       speed:
@@ -8447,7 +8447,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 3
       minMaxState: 0
-      scalar: 1
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -8623,7 +8623,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 1
+      value: 0.7
       mode: 0
       spread: 0
       speed:
@@ -13723,7 +13723,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 3
       minMaxState: 0
-      scalar: 1
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -13899,7 +13899,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 1
+      value: 0.7
       mode: 0
       spread: 0
       speed:
@@ -17183,7 +17183,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 99da54d4559990043956a274b2999984, type: 3}
   drainParticles: {fileID: 865129949}
   maxEmissionRate: 50
-  particleSpeed: 2
+  maxParticleSpeed: 5
+  minParticleSpeed: 0.1
   playerInRangeColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!114 &1627673984
 MonoBehaviour:
@@ -17753,7 +17754,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 99da54d4559990043956a274b2999984, type: 3}
   drainParticles: {fileID: 1204024769}
   maxEmissionRate: 50
-  particleSpeed: 2
+  maxParticleSpeed: 5
+  minParticleSpeed: 0.1
   playerInRangeColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!114 &1735421041
 MonoBehaviour:
@@ -18398,7 +18400,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 3
       minMaxState: 0
-      scalar: 1
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -18574,7 +18576,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 1
+      value: 0.7
       mode: 0
       spread: 0
       speed:
@@ -20926,7 +20928,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 99da54d4559990043956a274b2999984, type: 3}
   drainParticles: {fileID: 1766287411}
   maxEmissionRate: 50
-  particleSpeed: 2
+  maxParticleSpeed: 5
+  minParticleSpeed: 0.1
   playerInRangeColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!114 &1938964044
 MonoBehaviour:
@@ -21117,7 +21120,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 99da54d4559990043956a274b2999984, type: 3}
   drainParticles: {fileID: 103459860}
   maxEmissionRate: 50
-  particleSpeed: 2
+  maxParticleSpeed: 5
+  minParticleSpeed: 0.1
   playerInRangeColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!114 &2012342537
 MonoBehaviour:
