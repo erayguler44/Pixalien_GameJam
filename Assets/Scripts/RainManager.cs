@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem; 
-using UnityEngine.AI; // Required to control player speed
+using UnityEngine.AI; 
 using System.Collections; 
 
 public class RainManager : MonoBehaviour
@@ -13,15 +13,16 @@ public class RainManager : MonoBehaviour
     public bool isRaining = false;
     private bool isGameOver = false;
 
+    [Header("Big Trash Hazard")]
+    public float minBigTrashInterval = 20f;
+    public float maxBigTrashInterval = 40f;
+    private float bigTrashTimer;
+
     [Header("Difficulty & Speed Constraints")]
-    [Tooltip("Drag your player's SpriteVisual (with the NavMeshAgent) here")]
     public NavMeshAgent playerAgent;
-    public float maxPlayerSpeed = 3.5f; // Normal fast walking
-    public float minPlayerSpeed = 1.0f; // Very slow deep water struggle
-    
-    [Tooltip("Constant speed water rises when raining")]
+    public float maxPlayerSpeed = 3.5f; 
+    public float minPlayerSpeed = 1.0f; 
     public float rainAddSpeed = 0.35f; 
-    [Tooltip("Amount of water ONE fully clean drain removes per second")]
     public float maxDrainPower = 0.15f; 
 
     [Header("Water Objects & Limits")]
@@ -54,6 +55,9 @@ public class RainManager : MonoBehaviour
         {
             if (node != null) node.UpdateWaterLevel(minWaterY);
         }
+
+        // Start the first hazard timer
+        bigTrashTimer = Random.Range(minBigTrashInterval, maxBigTrashInterval);
     }
 
     void Update()
@@ -65,7 +69,6 @@ public class RainManager : MonoBehaviour
             freezeWaterLevel = !freezeWaterLevel;
         }
 
-        // 1. Handle Prep Phase
         if (!isRaining)
         {
             currentTimer += Time.deltaTime;
@@ -82,17 +85,33 @@ public class RainManager : MonoBehaviour
             return; 
         }
 
-        // 2. Calculate Total Exponential Drain Power
+        // --- BIG TRASH SPAWN LOGIC ---
+        bool isBigTrashAlreadyOnMap = false;
+        foreach (DrainageNode node in drainages)
+        {
+            if (node != null && node.hasBigTrash) isBigTrashAlreadyOnMap = true;
+        }
+
+        // Only count down if there isn't one already
+        if (!freezeWaterLevel && !isBigTrashAlreadyOnMap)
+        {
+            bigTrashTimer -= Time.deltaTime;
+            if (bigTrashTimer <= 0f)
+            {
+                SpawnBigTrash();
+                bigTrashTimer = Random.Range(minBigTrashInterval, maxBigTrashInterval);
+            }
+        }
+
+        // --- WATER MOVEMENT ---
         float totalDrainPower = 0f;
         foreach (DrainageNode node in drainages)
         {
             if (node != null) totalDrainPower += node.GetDrainEfficiency();
         }
 
-        // 3. Move Water & Slow Player (If not frozen)
         if (!freezeWaterLevel)
         {
-            // Flow Rate = Rain filling up MINUS Drains sucking it down
             float flowRate = rainAddSpeed - (totalDrainPower * maxDrainPower);
             
             Vector3 newPos = waterCube.position;
@@ -100,13 +119,11 @@ public class RainManager : MonoBehaviour
             newPos.y = Mathf.Max(newPos.y, minWaterY);
             waterCube.position = newPos;
 
-            // Dynamically slow down the player based on water height
             if (playerAgent != null)
             {
                 float waterPercent = Mathf.InverseLerp(minWaterY, maxWaterY, waterCube.position.y);
                 float targetSpeed = Mathf.Lerp(maxPlayerSpeed, minPlayerSpeed, waterPercent);
                 
-                // NEW: Apply a severe 75% speed penalty if the trash bag is completely full
                 if (ScoreManager.Instance != null && ScoreManager.Instance.currentBagLoad >= ScoreManager.Instance.maxBagCapacity)
                 {
                     targetSpeed *= 0.25f; 
@@ -116,16 +133,28 @@ public class RainManager : MonoBehaviour
             }
         }
 
-        // 4. Update Particles
+        // --- UPDATE PARTICLES & GAME OVER ---
         foreach (DrainageNode node in drainages)
         {
             if (node != null) node.UpdateWaterLevel(waterCube.position.y);
         }
 
-        // 5. Check for Game Over
         if (!freezeWaterLevel && waterCube.position.y >= maxWaterY)
         {
             GameOver();
+        }
+    }
+
+    private void SpawnBigTrash()
+    {
+        if (drainages.Length > 0)
+        {
+            int randomIndex = Random.Range(0, drainages.Length);
+            if (drainages[randomIndex] != null)
+            {
+                drainages[randomIndex].TriggerBigTrash();
+                Debug.Log("A massive clog appeared on " + drainages[randomIndex].gameObject.name);
+            }
         }
     }
 
