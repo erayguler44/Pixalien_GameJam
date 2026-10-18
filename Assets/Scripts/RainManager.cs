@@ -10,7 +10,6 @@ public class RainManager : MonoBehaviour
     private float currentTimer = 0f;
     public bool isRaining = false;
     
-    // NEW: Prevents the GameOver function from looping
     private bool isGameOver = false;
 
     [Header("Water Objects & Limits")]
@@ -36,11 +35,19 @@ public class RainManager : MonoBehaviour
 
         if (rainParticles != null) rainParticles.Stop();
         if (rainAudio != null) rainAudio.volume = 0f;
+
+        // NEW: Instantly update all drainages to the starting water level so particles stay hidden
+        foreach (DrainageNode node in drainages)
+        {
+            if (node != null)
+            {
+                node.UpdateWaterLevel(minWaterY);
+            }
+        }
     }
 
     void Update()
     {
-        // Stop running all logic if the game has already ended
         if (isGameOver) return;
 
         // 1. Handle Prep Phase
@@ -77,7 +84,16 @@ public class RainManager : MonoBehaviour
         newPos.y = Mathf.Max(newPos.y, minWaterY);
         waterCube.position = newPos;
 
-        // 4. Check for Game Over (Now protected by the boolean flag)
+        // 4. Update Drainage Particles to match water level
+        foreach (DrainageNode node in drainages)
+        {
+            if (node != null)
+            {
+                node.UpdateWaterLevel(waterCube.position.y);
+            }
+        }
+
+        // 5. Check for Game Over
         if (waterCube.position.y >= maxWaterY)
         {
             GameOver();
@@ -98,7 +114,6 @@ public class RainManager : MonoBehaviour
 
     void GameOver()
     {
-        // Lock the flag so this can never be called a second time
         isGameOver = true;
         Debug.Log("Game Over! Opening Menu...");
         GameMenu.Instance.GameOver();

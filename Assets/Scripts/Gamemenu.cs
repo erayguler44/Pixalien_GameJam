@@ -16,12 +16,17 @@ public class GameMenu : MonoBehaviour
     [SerializeField] GameObject gameOverPanel;
     [SerializeField] GameObject pauseBlur;
 
-    [Header("Audio")]
+    [Header("Audio - SFX")]
     [SerializeField] AudioSource gameOverAudio;
     [Tooltip("Drag the AudioSource containing the button click sound here")]
     [SerializeField] AudioSource uiClickAudio;
     [Tooltip("Drag the AudioSource containing the button hover sound here")]
     [SerializeField] AudioSource uiHoverAudio;
+
+    [Header("Audio - Background Music")]
+    [SerializeField] AudioSource menuMusic;
+    [SerializeField] AudioSource gameMusic;
+    [SerializeField] AudioSource gameOverMusic;
 
     enum State { MainMenu, Playing, Paused, GameOver }
     State state;
@@ -33,11 +38,15 @@ public class GameMenu : MonoBehaviour
 
     void Start()
     {
+        // SFX setup
         if (gameOverAudio != null) gameOverAudio.ignoreListenerPause = true;
         if (uiClickAudio != null) uiClickAudio.ignoreListenerPause = true;
-        
-        // CRITICAL: Hover sounds must play even when the game is paused
         if (uiHoverAudio != null) uiHoverAudio.ignoreListenerPause = true;
+
+        // Music setup: Allow music to play even when the global AudioListener is paused
+        if (menuMusic != null) menuMusic.ignoreListenerPause = true;
+        if (gameMusic != null) gameMusic.ignoreListenerPause = true;
+        if (gameOverMusic != null) gameOverMusic.ignoreListenerPause = true;
 
         if (skipMainMenu)
         {
@@ -154,7 +163,52 @@ public class GameMenu : MonoBehaviour
         if (pauseBlur != null)
             pauseBlur.SetActive(state == State.Paused || state == State.GameOver);
 
+        // Handle background music transitions
+        UpdateMusic(newState);
+
         Time.timeScale = IsPlaying ? 1f : 0f;
-        AudioListener.pause = !IsPlaying;
+        AudioListener.pause = !IsPlaying; // Mutes in-game SFX like rain/footsteps
+    }
+
+    private void UpdateMusic(State newState)
+    {
+        // 1. Handle Game Music
+        if (gameMusic != null)
+        {
+            if (newState == State.Playing)
+            {
+                if (!gameMusic.isPlaying) gameMusic.Play(); 
+            }
+            else
+            {
+                gameMusic.Pause(); // Pausing keeps its exact spot for when you resume
+            }
+        }
+
+        // 2. Handle Menu Music (Used for both Main Menu and Pause Menu)
+        if (menuMusic != null)
+        {
+            if (newState == State.MainMenu || newState == State.Paused)
+            {
+                if (!menuMusic.isPlaying) menuMusic.Play();
+            }
+            else
+            {
+                menuMusic.Stop(); // Stop completely so it restarts from the beginning next time
+            }
+        }
+
+        // 3. Handle Game Over Music
+        if (gameOverMusic != null)
+        {
+            if (newState == State.GameOver)
+            {
+                if (!gameOverMusic.isPlaying) gameOverMusic.Play();
+            }
+            else
+            {
+                gameOverMusic.Stop();
+            }
+        }
     }
 }

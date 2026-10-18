@@ -12,13 +12,19 @@ public class DrainageNode : MonoBehaviour
     [Header("Cleaning Settings")]
     public Transform player;
     public float cleaningRadius = 2.0f;
-    
-    // NEW: Reference to your animation script
     private PlayerVisuals playerVisuals; 
 
     [Header("Visuals (2D Sprites)")]
     public SpriteRenderer debrisRenderer;
     public Sprite[] debrisSprites;
+
+    [Header("Drain Particle Settings")]
+    public ParticleSystem drainParticles;
+    public float maxEmissionRate = 50f;
+    [Tooltip("Speed when the drain is perfectly clean")]
+    public float maxParticleSpeed = 3f;
+    [Tooltip("Speed when the drain is almost completely clogged")]
+    public float minParticleSpeed = 0.5f;
 
     [Header("Debug Visuals")]
     public Color playerInRangeColor = Color.green; 
@@ -34,7 +40,6 @@ public class DrainageNode : MonoBehaviour
             if (playerObj != null) player = playerObj.transform;
         }
 
-        // NEW: Automatically grab the PlayerVisuals script from the player's child object
         if (player != null)
         {
             playerVisuals = player.GetComponentInChildren<PlayerVisuals>();
@@ -100,7 +105,6 @@ public class DrainageNode : MonoBehaviour
         timer = 0f;
         UpdateVisuals();
         
-        // NEW: Tell the player character to play the cleaning animation and stop moving
         if (playerVisuals != null && !playerVisuals.isCleaning)
         {
             playerVisuals.StartCleaning();
@@ -122,6 +126,39 @@ public class DrainageNode : MonoBehaviour
                 debrisRenderer.sprite = debrisSprites[obstacleLevel - 1];
             }
         }
+    }
+
+    public void UpdateWaterLevel(float currentWaterY)
+    {
+        if (drainParticles == null) return;
+
+        float distanceToWater = currentWaterY - transform.position.y;
+        var emission = drainParticles.emission;
+        var main = drainParticles.main;
+
+        if (distanceToWater <= 0.05f) 
+        {
+            emission.rateOverTime = 0f;
+            return;
+        }
+
+        if (!drainParticles.isPlaying)
+        {
+            drainParticles.Play();
+        }
+
+        // Calculate how clean the drain is (1 = clean, 0 = clogged)
+        float efficiency = 1f - ((float)obstacleLevel / (float)maxLevel);
+        
+        // 1. Scale emission amount
+        emission.rateOverTime = maxEmissionRate * efficiency;
+
+        // 2. Scale particle speed smoothly between your min and max
+        float currentSpeed = Mathf.Lerp(minParticleSpeed, maxParticleSpeed, efficiency);
+        main.startSpeed = currentSpeed;
+
+        // 3. Recalculate lifetime using the NEW exact speed so they still clip perfectly
+        main.startLifetime = distanceToWater / currentSpeed;
     }
 
     void OnDrawGizmosSelected()
