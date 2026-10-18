@@ -1,6 +1,8 @@
 using UnityEngine;
 
-
+// Karakterin içine boş bir objeye eklenir (Particle System ile birlikte).
+// Karakter sudayken ve yürürken su yüzeyinde küçük, pikselli köpükçükler bırakır.
+// Partikül ayarlarını kendisi yapar; elle ayar gerekmez.
 [RequireComponent(typeof(ParticleSystem))]
 public class WaterTrail : MonoBehaviour
 {
@@ -11,6 +13,12 @@ public class WaterTrail : MonoBehaviour
     [SerializeField] Transform character;
 
     [Header("Görünüm")]
+    [Tooltip("Doluysa kare yerine bu materyal kullanılır (örn. yağmurun RainParticleMat'i)")]
+    [SerializeField] Material dropMaterial;
+    [Tooltip("Materyaldeki çizim kaç kareden oluşuyor (RainRipple için 4 x 1). Tek resimse 1 x 1.")]
+    [SerializeField] Vector2Int sheetTiles = new Vector2Int(4, 1);
+    [Tooltip("Açıksa partiküller su yüzeyine yatık durur (halka için). Kapalıysa kameraya döner.")]
+    [SerializeField] bool lieFlatOnWater = true;
     [Tooltip("Yürünen her birim mesafede kaç köpükçük çıksın")]
     [SerializeField] float bubblesPerUnit = 6f;
     [Tooltip("Köpükçüklerin saydamlığı (0 = görünmez, 1 = tam beyaz)")]
@@ -84,9 +92,40 @@ public class WaterTrail : MonoBehaviour
         size.enabled = true;
         size.size = new ParticleSystem.MinMaxCurve(1f, AnimationCurve.Linear(0f, 1f, 1f, 0.3f));
 
-        // Yumuşak yuvarlak yerine keskin kare (pixel) görünüm
         var rend = GetComponent<ParticleSystemRenderer>();
         rend.renderMode = ParticleSystemRenderMode.Billboard;
+
+        if (dropMaterial != null)
+        {
+            // Hazır materyal (örn. yağmur halkası): çizimin kendi renkleri kalsın
+            rend.sharedMaterial = dropMaterial;
+            rend.material.renderQueue = 3100;  // sadece bu efektin kopyası; suyun üstünde çizilsin
+
+            // Halka su yüzeyine yatsın
+            rend.renderMode = lieFlatOnWater
+                ? ParticleSystemRenderMode.HorizontalBillboard
+                : ParticleSystemRenderMode.Billboard;
+
+            // Çok kareli çizimi animasyon olarak oynat (hepsini yan yana gösterme)
+            var sheet = ps.textureSheetAnimation;
+            bool multiFrame = sheetTiles.x * sheetTiles.y > 1;
+            sheet.enabled = multiFrame;
+            if (multiFrame)
+            {
+                sheet.mode = ParticleSystemAnimationMode.Grid;
+                sheet.numTilesX = Mathf.Max(1, sheetTiles.x);
+                sheet.numTilesY = Mathf.Max(1, sheetTiles.y);
+                sheet.animation = ParticleSystemAnimationType.WholeSheet;
+                sheet.frameOverTime = new ParticleSystem.MinMaxCurve(1f, AnimationCurve.Linear(0f, 0f, 1f, 1f));
+            }
+
+            // Boyutu sabit tut (halka zaten kendi animasyonuyla büyüyor), sonuna doğru sönsün
+            main.startColor = new Color(1f, 1f, 1f, opacity);
+            size.enabled = false;
+            return;
+        }
+
+        // Yumuşak yuvarlak yerine keskin kare (pixel) görünüm
         if (rend.sharedMaterial != null)
         {
             var tex = new Texture2D(1, 1) { filterMode = FilterMode.Point };
