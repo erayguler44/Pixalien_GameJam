@@ -7161,10 +7161,10 @@ MonoBehaviour:
   prepTime: 2
   isRaining: 0
   playerAgent: {fileID: 1771167620}
-  maxPlayerSpeed: 3.5
-  minPlayerSpeed: 1
+  maxPlayerSpeed: 3.8
+  minPlayerSpeed: 1.5
   rainAddSpeed: 0.35
-  maxDrainPower: 0.15
+  maxDrainPower: 0.25
   waterCube: {fileID: 747753813}
   minWaterY: -0.5
   maxWaterY: 2
