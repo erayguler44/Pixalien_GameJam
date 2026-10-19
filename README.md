@@ -84,4 +84,4 @@ Kod tarafında AI kullanım yerleri:
 Eray Güler , Developer 
 Ziya Emre Özçetin , Developer
 Selay Yılmaz , Artist ve designer
-Can Sadaghiani , sfx ve designer
+Can Sadaghiani , Insan kaynakları ve kontenjan işgali
