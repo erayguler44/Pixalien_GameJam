@@ -23922,6 +23922,54 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!1 &1358414728
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1358414729}
+  - component: {fileID: 1358414730}
+  m_Layer: 0
+  m_Name: Car1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1358414729
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358414728}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.85, y: 0, z: 34.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1738877693}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1358414730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358414728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06df10b79caa49949babb152bc2e9654, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VehicleLoop
+  speed: -10
+  despawnZ: -40
+  respawnZ: 40
 --- !u!1 &1361127927
 GameObject:
   m_ObjectHideFlags: 0
@@ -25709,8 +25757,8 @@ GameObject:
   - component: {fileID: 1738877693}
   - component: {fileID: 1738877692}
   - component: {fileID: 1738877691}
-  - component: {fileID: 1738877694}
   - component: {fileID: 1738877695}
+  - component: {fileID: 1738877696}
   m_Layer: 0
   m_Name: Vehicle
   m_TagString: Untagged
@@ -25743,7 +25791,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 96fa62642ededc848bc3c778f986a75f, type: 2}
+  - {fileID: 2100000, guid: c235935e1b27c9e4fa696301598f88c4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -25783,28 +25831,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1738877690}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 5.85, y: 0.6, z: 34.8}
-  m_LocalScale: {x: 0.67, y: 0.67, z: 0.67}
+  m_LocalRotation: {x: 0.3535534, y: 0.61237246, z: -0.3535534, w: 0.61237246}
+  m_LocalPosition: {x: -1.22, y: 1.12, z: 0}
+  m_LocalScale: {x: 0.56, y: 0.28, z: 0.28}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: -90}
---- !u!114 &1738877694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1738877690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06df10b79caa49949babb152bc2e9654, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::VehicleLoop
-  speed: -10
-  despawnZ: -40
-  respawnZ: 40
+  m_Father: {fileID: 1358414729}
+  m_LocalEulerAnglesHint: {x: 60, y: 90, z: 0}
 --- !u!82 &1738877695
 AudioSource:
   m_ObjectHideFlags: 0
@@ -25902,6 +25935,29 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1738877696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738877690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a97af8e83f7f9c4497985ca418c7725, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarAnimation
+  carMesh: {fileID: 1738877691}
+  animationFrames:
+  - {fileID: 2800000, guid: 8111cf90317528a4dafd61993a3288de, type: 3}
+  - {fileID: 2800000, guid: da3f272244e688342a6f38c187ecf207, type: 3}
+  - {fileID: 2800000, guid: bd1d14222f13b524cb3ac8751b4dfc86, type: 3}
+  - {fileID: 2800000, guid: 32a1aade50c3ed043901eda7f6b8eb35, type: 3}
+  - {fileID: 2800000, guid: 4168874b37737cf4aa0e675fc7a536e9, type: 3}
+  - {fileID: 2800000, guid: af281558699fb0540bb29f25e5c2956d, type: 3}
+  - {fileID: 2800000, guid: d00115aa65925bd47a04f507715c121b, type: 3}
+  - {fileID: 2800000, guid: ce67aebb6f7fabe4abe9c247f507ffeb, type: 3}
+  framesPerSecond: 10
 --- !u!1001 &1759229905
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35272,7 +35328,7 @@ SceneRoots:
   - {fileID: 1764665362}
   - {fileID: 747753813}
   - {fileID: 574844690}
-  - {fileID: 1738877693}
+  - {fileID: 1358414729}
   - {fileID: 689924176}
   - {fileID: 2015424493}
   - {fileID: 1135266767}
