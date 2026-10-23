@@ -7034,7 +7034,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &563372987
 Transform:
   m_ObjectHideFlags: 0
@@ -7043,13 +7043,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 563372986}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0.5350001, y: 13, z: 0}
-  m_LocalScale: {x: 0.11000001, y: 0.11000001, z: 3.25}
-  m_ConstrainProportionsScale: 1
+  m_LocalRotation: {x: 0.3535534, y: 0.61237246, z: -0.3535534, w: 0.61237246}
+  m_LocalPosition: {x: 2.75, y: 0.66, z: 36}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
+  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1759229906}
-  m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
+  m_Father: {fileID: 635381524}
+  m_LocalEulerAnglesHint: {x: 60, y: 90, z: 0}
 --- !u!23 &563372989
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7540,9 +7540,13 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2083471753}
   - {fileID: 106031862}
+  - {fileID: 1251538878}
   - {fileID: 1627673975}
+  - {fileID: 563372987}
   - {fileID: 1759229906}
+  - {fileID: 1413610705}
   - {fileID: 1938964035}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -21263,7 +21267,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1251538878
 Transform:
   m_ObjectHideFlags: 0
@@ -21272,13 +21276,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1251538877}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0.5350001, y: 13, z: 0}
-  m_LocalScale: {x: 0.11000001, y: 0.11000001, z: 3.25}
-  m_ConstrainProportionsScale: 1
+  m_LocalRotation: {x: 0.3535534, y: 0.61237246, z: -0.3535534, w: 0.61237246}
+  m_LocalPosition: {x: 2.75, y: 0.66, z: 24}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
+  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1627673975}
-  m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
+  m_Father: {fileID: 635381524}
+  m_LocalEulerAnglesHint: {x: 60, y: 90, z: 0}
 --- !u!23 &1251538880
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -24026,7 +24030,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1413610705
 Transform:
   m_ObjectHideFlags: 0
@@ -24035,13 +24039,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1413610704}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0.5350001, y: 13, z: 0}
-  m_LocalScale: {x: 0.11000001, y: 0.11000001, z: 3.25}
-  m_ConstrainProportionsScale: 1
+  m_LocalRotation: {x: 0.3535534, y: 0.61237246, z: -0.3535534, w: 0.61237246}
+  m_LocalPosition: {x: 2.75, y: 0.66, z: 48}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
+  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1938964035}
-  m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
+  m_Father: {fileID: 635381524}
+  m_LocalEulerAnglesHint: {x: 60, y: 90, z: 0}
 --- !u!23 &1413610707
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -24879,9 +24883,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6049592282245532019, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1815100325}
-    - targetCorrespondingSourceObject: {fileID: 6049592282245532019, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1251538878}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8732811460859032716, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
       insertIndex: -1
@@ -25970,9 +25971,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6049592282245532019, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1319572240}
-    - targetCorrespondingSourceObject: {fileID: 6049592282245532019, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 563372987}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8732811460859032716, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
       insertIndex: -1
@@ -31289,9 +31287,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6049592282245532019, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1766287409}
-    - targetCorrespondingSourceObject: {fileID: 6049592282245532019, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1413610705}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8732811460859032716, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
       insertIndex: -1
@@ -34347,7 +34342,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2083471753
 Transform:
   m_ObjectHideFlags: 0
@@ -34356,13 +34351,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2083471752}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0.535, y: 18, z: 0}
-  m_LocalScale: {x: 0.11000001, y: 0.11000001, z: 3.25}
+  m_LocalRotation: {x: 0.3535534, y: 0.61237246, z: -0.3535534, w: 0.61237246}
+  m_LocalPosition: {x: 2.75, y: 0.91, z: 12}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 106031862}
-  m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
+  m_Father: {fileID: 635381524}
+  m_LocalEulerAnglesHint: {x: 60, y: 90, z: 0}
 --- !u!23 &2083471755
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -35026,9 +35021,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6049592282245532019, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
       insertIndex: -1
       addedObject: {fileID: 710833594}
-    - targetCorrespondingSourceObject: {fileID: 6049592282245532019, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2083471753}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8732811460859032716, guid: 311ca178317eac14ca8f8668c700a411, type: 3}
       insertIndex: -1
