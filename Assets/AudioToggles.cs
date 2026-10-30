@@ -18,6 +18,14 @@ public class AudioToggles : MonoBehaviour
     [Tooltip("Müzik çalan AudioSource'lar (menü, oyun, game over müzikleri)")]
     [SerializeField] AudioSource[] musicSources;
 
+    [Tooltip("Açıksa, obje adında bu kelime geçen her AudioSource da müzik sayılır")]
+    [SerializeField] bool detectMusicByName = true;
+    [SerializeField] string musicNameKeyword = "Music";
+
+    [Header("Kontrol (sadece okumak için)")]
+    [Tooltip("Oyun sırasında müzik olarak tanınan sesler")]
+    [SerializeField] List<string> debugMusicFound = new List<string>();
+
     [Header("Buton yazıları (opsiyonel, birden fazla menü için)")]
     [SerializeField] TMP_Text[] musicLabels;
     [SerializeField] TMP_Text[] sfxLabels;
@@ -89,7 +97,17 @@ public class AudioToggles : MonoBehaviour
         var all = FindObjectsByType<AudioSource>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         foreach (var src in all)
         {
-            bool shouldMute = music.Contains(src) ? !MusicOn : !SfxOn;
+            bool isMusic = music.Contains(src);
+            if (!isMusic && detectMusicByName && !string.IsNullOrEmpty(musicNameKeyword) &&
+                src.gameObject.name.IndexOf(musicNameKeyword, System.StringComparison.OrdinalIgnoreCase) >= 0)
+            {
+                music.Add(src);
+                isMusic = true;
+            }
+            if (isMusic && !debugMusicFound.Contains(src.gameObject.name))
+                debugMusicFound.Add(src.gameObject.name);
+
+            bool shouldMute = isMusic ? !MusicOn : !SfxOn;
             if (src.mute != shouldMute) src.mute = shouldMute;
         }
     }
