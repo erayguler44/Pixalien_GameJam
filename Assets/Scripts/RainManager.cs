@@ -13,6 +13,29 @@ public class RainManager : MonoBehaviour
     public bool isRaining = false;
     private bool isGameOver = false;
 
+    [Header("Weather Cycle Settings")]
+    public bool allowNoRainStage = true;
+    public float minRainChangeInterval = 20f;
+    public float maxRainChangeInterval = 100f;
+    private float rainChangeTimer = 0f;
+    private float currentRainSpeed = 0f;
+    private float targetRainVolume = 0f;
+
+    public enum RainStage { NoRain = 0, Lowest = 1, Mid = 2, Heaviest = 3 }
+    public RainStage currentRainStage;
+
+    [Header("Rain Stage: Lowest")]
+    public float lowestRainSpeed = 0.1f;
+    public float lowestEmission = 100f;
+
+    [Header("Rain Stage: Mid")]
+    public float midRainSpeed = 0.25f;
+    public float midEmission = 2500f;
+
+    [Header("Rain Stage: Heaviest")]
+    public float heaviestRainSpeed = 0.5f;
+    public float heaviestEmission = 5000f;
+
     [Header("Big Trash Hazard")]
     public float minBigTrashInterval = 20f;
     public float maxBigTrashInterval = 40f;
@@ -22,7 +45,6 @@ public class RainManager : MonoBehaviour
     public NavMeshAgent playerAgent;
     public float maxPlayerSpeed = 3.5f; 
     public float minPlayerSpeed = 1.0f; 
-    public float rainAddSpeed = 0.35f; 
     public float maxDrainPower = 0.15f; 
 
     [Header("Water Objects & Limits")]
@@ -36,6 +58,7 @@ public class RainManager : MonoBehaviour
     [Header("Rain Visuals & Audio")]
     public ParticleSystem rainParticles;
     public AudioSource rainAudio;
+    public AudioSource thunderAudio; // NEW: Thunder sound effect
     public float fadeDuration = 2f;
     public float maxVolume = 1f;
 
@@ -56,7 +79,6 @@ public class RainManager : MonoBehaviour
             if (node != null) node.UpdateWaterLevel(minWaterY);
         }
 
-        // Start the first hazard timer
         bigTrashTimer = Random.Range(minBigTrashInterval, maxBigTrashInterval);
     }
 
@@ -69,6 +91,11 @@ public class RainManager : MonoBehaviour
             freezeWaterLevel = !freezeWaterLevel;
         }
 
+        if (isRaining && rainAudio != null)
+        {
+            rainAudio.volume = Mathf.MoveTowards(rainAudio.volume, targetRainVolume, Time.deltaTime * (maxVolume / fadeDuration));
+        }
+
         if (!isRaining)
         {
             currentTimer += Time.deltaTime;
@@ -76,13 +103,23 @@ public class RainManager : MonoBehaviour
             {
                 isRaining = true;
                 if (rainParticles != null) rainParticles.Play();
-                if (rainAudio != null)
-                {
-                    rainAudio.Play();
-                    StartCoroutine(FadeInAudio());
-                }
+                if (rainAudio != null) rainAudio.Play();
+
+                ChangeRainStage(GetRandomRainStage());
+                rainChangeTimer = Random.Range(minRainChangeInterval, maxRainChangeInterval);
             }
             return; 
+        }
+
+        // --- DYNAMIC RAIN STAGE LOGIC ---
+        if (!freezeWaterLevel)
+        {
+            rainChangeTimer -= Time.deltaTime;
+            if (rainChangeTimer <= 0f)
+            {
+                ChangeRainStage(GetRandomRainStage());
+                rainChangeTimer = Random.Range(minRainChangeInterval, maxRainChangeInterval);
+            }
         }
 
         // --- BIG TRASH SPAWN LOGIC ---
@@ -92,7 +129,6 @@ public class RainManager : MonoBehaviour
             if (node != null && node.hasBigTrash) isBigTrashAlreadyOnMap = true;
         }
 
-        // Only count down if there isn't one already
         if (!freezeWaterLevel && !isBigTrashAlreadyOnMap)
         {
             bigTrashTimer -= Time.deltaTime;
@@ -112,7 +148,7 @@ public class RainManager : MonoBehaviour
 
         if (!freezeWaterLevel)
         {
-            float flowRate = rainAddSpeed - (totalDrainPower * maxDrainPower);
+            float flowRate = currentRainSpeed - (totalDrainPower * maxDrainPower);
             
             Vector3 newPos = waterCube.position;
             newPos.y += flowRate * Time.deltaTime;
@@ -145,6 +181,63 @@ public class RainManager : MonoBehaviour
         }
     }
 
+    private RainStage GetRandomRainStage()
+    {
+        if (allowNoRainStage) 
+        {
+            return (RainStage)Random.Range(0, 4); 
+        }
+        else 
+        {
+            return (RainStage)Random.Range(1, 4); 
+        }
+    }
+
+    private void ChangeRainStage(RainStage newStage)
+    {
+        currentRainStage = newStage;
+
+        // NEW: Play thunder sound effect whenever the weather changes
+        if (thunderAudio != null)
+        {
+            thunderAudio.Play();
+        }
+        
+        if (rainParticles != null)
+        {
+            var emission = rainParticles.emission;
+
+            switch (currentRainStage)
+            {
+                case RainStage.NoRain:
+                    currentRainSpeed = 0f;
+                    emission.rateOverTime = 0f;
+                    targetRainVolume = 0f;
+                    break;
+                    
+                case RainStage.Lowest:
+                    currentRainSpeed = lowestRainSpeed;
+                    emission.rateOverTime = lowestEmission;
+                    targetRainVolume = maxVolume * 0.33f;
+                    break;
+                    
+                case RainStage.Mid:
+                    currentRainSpeed = midRainSpeed;
+                    emission.rateOverTime = midEmission;
+                    targetRainVolume = maxVolume * 0.66f;
+                    break;
+                    
+                case RainStage.Heaviest:
+                    currentRainSpeed = heaviestRainSpeed;
+                    emission.rateOverTime = heaviestEmission;
+                    targetRainVolume = maxVolume;
+                    break;
+            }
+        }
+        
+        Debug.Log("Weather Changed! Intensity is now: " + currentRainStage.ToString());
+    }
+
     private void SpawnBigTrash()
     {
         if (drainages.Length > 0)
@@ -153,21 +246,8 @@ public class RainManager : MonoBehaviour
             if (drainages[randomIndex] != null)
             {
                 drainages[randomIndex].TriggerBigTrash();
-                Debug.Log("A massive clog appeared on " + drainages[randomIndex].gameObject.name);
             }
         }
-    }
-
-    private IEnumerator FadeInAudio()
-    {
-        float elapsedTime = 0f;
-        while (elapsedTime < fadeDuration)
-        {
-            elapsedTime += Time.deltaTime;
-            rainAudio.volume = Mathf.Lerp(0f, maxVolume, elapsedTime / fadeDuration);
-            yield return null;
-        }
-        rainAudio.volume = maxVolume; 
     }
 
     void GameOver()
