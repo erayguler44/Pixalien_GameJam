@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: PIXALIEN
   productName: Seweriously Flooded
-  defaultCursor: {fileID: 2800000, guid: c1e8d8dad55cf0440a677310f660c029, type: 3}
+  defaultCursor: {fileID: 2800000, guid: 84da8f682e901734b8b0f12ced75ac54, type: 3}
   cursorHotspot: {x: 16, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1
