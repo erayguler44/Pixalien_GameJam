@@ -9,6 +9,8 @@ public class GameMenu : MonoBehaviour
     // Diğer scriptler buradan erişir: GameMenu.Instance.GameOver();
     public static GameMenu Instance { get; private set; }
 
+    public GameObject quitButton; // WebGL'de gizlenecek
+
     // Diğer scriptler oyunun akıp akmadığını buradan kontrol eder
     public static bool IsPlaying { get; private set; }
 
@@ -47,6 +49,9 @@ public class GameMenu : MonoBehaviour
 
     void Start()
     {
+        //For WEBGL, hide the quit button since quitting is not supported in browsers
+        if (Application.platform == RuntimePlatform.WebGLPlayer) quitButton.SetActive(false);
+
         // SFX setup: Allow UI sounds to play while game is paused
         if (gameOverAudio != null) gameOverAudio.ignoreListenerPause = true;
         if (uiClickAudio != null) uiClickAudio.ignoreListenerPause = true;

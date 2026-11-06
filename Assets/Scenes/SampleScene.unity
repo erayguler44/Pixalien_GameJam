@@ -8195,6 +8195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a7f01768a0dde64fa7493fd6efcc223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameMenu
+  quitButton: {fileID: 1317248643}
   mainMenuPanel: {fileID: 2015424497}
   pauseMenuPanel: {fileID: 2015424496}
   gameOverPanel: {fileID: 2015424494}

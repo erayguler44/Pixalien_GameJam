@@ -43,8 +43,8 @@ Material:
     - _BobSpeed: 1.5
     - _Cutoff: 0.062
     - _EdgeFade: 0.186
-    - _FoamWaveAmount: 0.045
-    - _FoamWidth: 0.099
+    - _FoamWaveAmount: 0
+    - _FoamWidth: 0
     - _ReceiveShadows: 0
     m_Colors:
     - _BaseColor: {r: 0.20594504, g: 0.40667677, b: 0.5597484, a: 0.50980395}
